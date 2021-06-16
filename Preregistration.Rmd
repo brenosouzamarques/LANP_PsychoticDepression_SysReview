@@ -47,7 +47,7 @@ A fully bayesian framework may offer significant advantages over a frequentist m
 
 ## Systematic Review
 
-This systematic review has been registered at the PROSPERO ....
+This systematic review has been registered at the PROSPERO (código do registro aqui) database.
 
 ### Inclusion Criteria
 
