@@ -1,43 +1,55 @@
 ---
 title: "**Neuropsychological profile of Unipolar Major Depression with psychotic features:** protocol for a systematic review and bayesian meta-analysis"
 author: |
-  | Natália Canário$^a$, Breno Souza-Marques$^a$$^b$, Aline S. Sampaio$^a$$^b$, Lucas C. Quarantini$^a$$^b$^[Corresponding author: Lucas C. Quarantini lcq@ufba.br]
+  | Natália Canário$^a$
+  | Breno Souza-Marques$^a$$^b$
+  | Aline S. Sampaio$^a$$^b$
+  | Lucas C. Quarantini$^a$$^b$^[Corresponding author: Lucas C. Quarantini lcq@ufba.br]
   |
   | $^a$Laboratory of Neuropsychopharmacology, Federal University of Bahia
   | $^b$Graduate Program in Medicine and Health, Federal University of Bahia
+abstract: This is a protocol for a systematic review with meta-analysis. This systematic review is focused on summarizing, and critically assessing, the available evidence both *for* and *against* a neuropsychological endophenotype of individuals with psychotic major depressive disorder. To this end, we will conduct a systematic appraisal of the literature, followed by a Bayesian meta-analysis and meta-regression. We follow the PRISMA-P guidelines for systematic review protocols [@shamseerPreferredReportingItems2015].
 output: 
-    pdf_document:
+    bookdown::pdf_document2:
+      toc: FALSE
       number_sections: TRUE
-geometry: margin = 1.5cm
 classoption:
-    - twocolumn
+  - onecolumn
+geometry: "left=2.5cm, right=2.5cm, top=2cm, bottom=2cm"
+fontsize: 12pt
 bibliography: mylib.bib
-csl: vancouver.csl
+link-citations: yes
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
-# Background
+# Rationale
 
-## A neuropsychological endophenotype may help differentiate psychotic from non-psychotic individuals
+Unipolar major depression with psychotic features (PMDD) is characterized by the presence of unipolar major depressive disorder (MDD), concomitant with hallucinations and/or delusional beliefs. PMDD is generally seen as a worse kind of MDD, with a profile of symptoms thought to lie between MDD and more severe psychotic disorders such as schizophrenia [@dubovskyPsychoticDepressionDiagnosis2021; @ostergaardMeasuringPsychoticDepression2014]. This is reflected on previous editions of the Diagnostic and Statistical Manual of Mental Disorders [@apaDiagnosticStatisticalManual2013], where PMDD was classified as an impaired sub-type of depression. 
 
-The debate on whether there is a specific neuropsychological endophenotype for unipolar major depressive disorder with psychotic features (PMDD), that is different from both non-psychotic unipolar depression (MDD) and schizophrenia, is not new [@jesteClinicalNeuropsychologicalComparison1996]. The view that PMDD is a more severe kind of MDD, with a profile of impairments that lies in between non-psychotic major depression and schizophrenia, has been consistently put forward in the literature [@dubovskyPsychoticDepressionDiagnosis2021].
-
-Much of this rationale is grounded on previous and current PMDD diagnostic criteria. Diagnosis of psychotic unipolar depression has been historically defined by severe impairment, which pushed PMDD to the end of a severity spectrum of major depression. It has also required delusions, hallucinations, or depressive stupor to be present, and has only recently been defined as a specifier that is independent of symptom severity [@dubovskyPsychoticDepressionDiagnosis2021; @apaDiagnosticStatisticalManual2013]. This latter decision is in line with current evidence, which suggests that psychotic features are not necessarily indicative of worse MDD severity from a symptomatology point-of-view, blurring the line between these diagnoses. Individuals with MDD may have equally or even more severe depression than individuals with PMDD [@parkPsychoticDepressionAssessment2014; @ostergaardValiditySeverityPsychosis2012], pointing towards a need of defining PMDD through other markers.
-
-A specific neuropsychological endophenotype, if it exists, may help to better define the boundaries of impairment between PMDD and MDD, and also to guide interventions for distinct mental health services.
+The available evidence, however, has shown that individuals with MDD may exhibit a more severe case of depression than those with PMDD [@parkPsychoticDepressionAssessment2014; @ostergaardValiditySeverityPsychosis2012], blurring the line between these diagnoses. Thus, a search for an endophenotype of these disorders, beyond assessing how severe are the depressive symptoms of an individual, may offer a clearer picture that helps define the boundaries and develop interventions tailored to the differences between PMDD and MDD.
 
 ## Neuropsychological profiles of PMDD: evidence from meta-analytic studies
 
-Efforts to summarize the available evidence on neuropsychological performance of individuals with PMDD in comparison to MDD are still scarce [@flemingNeuropsychologicalCorrelatesPsychotic2004; @zaninottoCognitiveMarkersPsychotic2015; @vermeulenCognitiveDeficitsOlder2019]. The study by Fleming et al. (2004) focused on whether neuropsychological tests could help differentiate individuals with PMDD from others with MDD, but due to the small number of studies available at the time (only five), some cognitive functions were compared in a very limited pool of data, sometimes only between two samples. Nonetheless, authors found the largest standardized mean differences in domains of motor speed, verbal memory, and executive functions [@flemingNeuropsychologicalCorrelatesPsychotic2004].
+The debate on whether there is a specific neuropsychological endophenotype for unipolar major depressive disorder with psychotic features (PMDD), that is different from both non-psychotic unipolar depression (MDD) and schizophrenia, is not new [@jesteClinicalNeuropsychologicalComparison1996]. The number of studies has only recently increased enough to allow a more systematic and robust assessment of the evidence. A specific neuropsychological endophenotype, if it exists, may help to better define the boundaries of impairment between PMDD and MDD, and also to guide interventions for distinct mental health services.
 
-The study by Zaninotto et al. (2015) was able to include 12 studies in a systematic review with meta-analysis and meta-regression. Using a random-effects model, they found effect sizes between 0.15 and 0.74 for five cognitive domains: Processing speed, Reasoning, Verbal memory, Visual memory, and Attention/Working memory. Only two of these effects were significant, however, with a standardized mean difference (SMD) of -0.67 [95%CI: -0.82, -0.52] for Verbal memory (*n* of studies = 6) and SMD of -0.62 [95%%CI: -0.80, -0.44] for Visual memory (*n* of studies = 4). For a measure of global cognition computed by the study authors, a significant effect of SMD = - 0.38 [95%CI: -0.57, -0.19] was observed. It is important to note that authors excluded two of the studies they found to be outliers, and even then, six out of the ten studies measured for this latter analysis had confidence intervals crossing zero, and an $I^2$ of 42% was reported. Finally, authors assessed age, gender, education and depressive severity as single moderators, finding an effect for age ($\beta$ = -1.31, SE = 0.5, p = 0.01) in tasks of working memory, but not for the other moderators.
+Efforts to summarize the available evidence on neuropsychological performance of individuals with PMDD in comparison to MDD are still scarce [@flemingNeuropsychologicalCorrelatesPsychotic2004; @zaninottoCognitiveMarkersPsychotic2015; @vermeulenCognitiveDeficitsOlder2019]. The study by @flemingNeuropsychologicalCorrelatesPsychotic2004 focused on whether neuropsychological tests could help differentiate individuals with PMDD from others with MDD, but due to the small number of studies available at the time (only five), some cognitive functions were compared in a very limited pool of data, sometimes only between two samples.
 
-The latest study to assess neuropsychological performance differences between PMDD and MDD individuals focused on older patients [@vermeulenCognitiveDeficitsOlder2019]. Authors included a total of 7 studies, and 3 of those had patients with bipolar psychotic depression. They found a Hedge's $g$ of -0.26 for measures of global cognition [95%CI -0.49, -0.02], $g$ = -0.64 [95%CI: -1.24, -0.03] for Attention (*n* of studies = 5), $g$ = -0.43 [95%CI: -0,69, -0,17] for Executive Function (*n* of studies = 6), and $g$ = -0.43 [95%CI: -0.70, -0.17] for Memory (*n* of studies = 5), but no significant effect for Verbal fluency. In this study by Vermeulen et al. (2019), heterogeneity $I^2$ values ranged from 0 to 69%.
+The review by Zaninotto et al. (2015) was able to include 12 studies. They found significant effects of standardized mean difference (SMD) = -0.67 [95%CI: -0.82, -0.52] for Verbal memory (*n* of studies = 6), and SMD = -0.62 [95%%CI: -0.80, -0.44] for Visual memory (*n* of studies = 4). For a measure of global cognition computed by the study authors, a significant effect of SMD = - 0.38 [95%CI: -0.57, -0.19] was observed. It is important to note that authors excluded two of the studies they found to be outliers, and even then, six out of the ten studies measured for this latter analysis had confidence intervals crossing zero, and an $I^2$ of 42% was reported. Finally, authors assessed age, gender, education and depressive severity as single moderators, finding an effect for age ($\beta$ = -1.31, SE = 0.5, p = 0.01) in tasks of working memory, but not for the other moderators.
 
-This brief review of the current evidence for, and against a neuropsychological endophenotype that can differentiate PMDD from MDD patients shows that the meta-analytic studies conducted so far faced some critical limitations. High heterogeneity and a small number of studies may have precluded researchers from clearly establishing a consistent and robust assessment of the reported effects. More importantly, results vary between meta-analytic studies over which neuropsychological functions are more significantly impaired in individuals with PMDD in comparison with MDD subjects. This means that non-significant *p*-values were be taken as evidence of an absence of effect, when they may simply be an absence of evidence in face of the above mentioned limitations [@nickersonNullHypothesisSignificance2000; @dienesUsingBayesGet2014; @altmanStatisticsNotesAbsence1995a].
+The latest study to assess neuropsychological performance differences between PMDD and MDD individuals focused on older patients [@vermeulenCognitiveDeficitsOlder2019]. Authors included a total of 7 studies, and 3 of those had patients with bipolar psychotic depression. They found a SMD of -0.26 for measures of global cognition [95%CI -0.49, -0.02], SMD = -0.64 [95%CI: -1.24, -0.03] for Attention (*n* of studies = 5), SMD = -0.43 [95%CI: -0,69, -0,17] for Executive Function (*n* of studies = 6), and SMD = -0.43 [95%CI: -0.70, -0.17] for Memory (*n* of studies = 5), but no significant effect for Verbal fluency.
+
+This brief review of the current evidence for a neuropsychological endophenotype that can differentiate PMDD from MDD patients shows that the meta-analytic studies conducted so far faced some critical limitations. High heterogeneity and a small number of studies may have precluded researchers from clearly establishing a consistent and robust assessment of the reported effects. More importantly, results vary between meta-analytic studies over which neuropsychological functions are more significantly impaired in individuals with PMDD in comparison with MDD subjects. This means that non-significant *p*-values may have been taken as evidence of an absence of effect, when they may simply be an absence of evidence in face of the above mentioned limitations [@nickersonNullHypothesisSignificance2000; @dienesUsingBayesGet2014; @altmanStatisticsNotesAbsence1995a].
+
+# Objectives
+
+In this systematic review with meta-analysis, we examine the available literature to answer the following questions:
+
+ - Q1: *"**Is there a neuropsychological profile (an endophenotype) for major depressive disorders with psychotic features that is different from that of non-psychotic unipolar depression?**"* For this question, we define a neuropsychological profile as a combination of results that quantify the difference in performance between individuals with PMDD and MDD, and that reflects an established neuropsychological function or domain of interest.
+ - Q2: *"**What are the moderators that can influence this neuropsychological profile?**"* For this question, we define moderators in three broad categories: within-subject clinical factors (age, psychiatric comorbidities, number of hospitalizations, severity of depressive symptoms, years with diagnosis, family members with psychiatric conditions, and other relevant information); within-subject sociodemographical variables (years of education, household income, marital status, employment status); and between-study factors (study design and setting, type of neuropsychological tests used).
 
 ## Using a bayesian meta-analysis to assess the available evidence
 
@@ -73,5 +85,4 @@ Meta-Regression is a statistical tool to assess the effects of pooled study-leve
 
 
 \newpage
-\onecolumn
 # References
