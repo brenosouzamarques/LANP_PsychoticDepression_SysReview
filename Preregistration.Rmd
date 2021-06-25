@@ -8,10 +8,10 @@ author: |
   |
   | $^a$Laboratory of Neuropsychopharmacology, Federal University of Bahia
   | $^b$Graduate Program in Medicine and Health, Federal University of Bahia
-abstract: This is a protocol for a systematic review with meta-analysis. This systematic review is focused on summarizing, and critically assessing, the available evidence both *for* and *against* a neuropsychological endophenotype of individuals with psychotic major depressive disorder. To this end, we will conduct a systematic appraisal of the literature, followed by a Bayesian meta-analysis and meta-regression. We follow the PRISMA-P guidelines for systematic review protocols [@shamseerPreferredReportingItems2015].
+abstract: This is a protocol for a systematic review with meta-analysis. This systematic review is focused on summarizing, and critically assessing, the available evidence both *for* and *against* a neuropsychological endophenotype of individuals with psychotic major depressive disorder. To this end, we will conduct a systematic appraisal of the literature, followed by a Bayesian meta-analysis and meta-regression. We follow the PRISMA-P guidelines for meta-analysis protocols [@shamseerPreferredReportingItems2015].
 output: 
     bookdown::pdf_document2:
-      toc: FALSE
+      toc: false
       number_sections: TRUE
 classoption:
   - onecolumn
@@ -19,7 +19,7 @@ geometry: "left=2.5cm, right=2.5cm, top=2cm, bottom=2cm"
 fontsize: 12pt
 bibliography: mylib.bib
 link-citations: yes
-csl: apa.csl
+csl: vancouver.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -42,6 +42,7 @@ The latest study to assess neuropsychological performance differences between PM
 
 This brief review of the current evidence for a neuropsychological endophenotype that can differentiate PMDD from MDD patients shows that the meta-analytic studies conducted so far faced some critical limitations. High heterogeneity and a small number of studies can impede researchers from clearly establishing a consistent and robust assessment of the reported effects. More importantly, results vary between meta-analytic studies over which neuropsychological functions are more significantly impaired in individuals with PMDD in comparison with MDD subjects. This means that non-significant *p*-values may have been taken as evidence of an absence of effect, when they may simply be an absence of evidence in face of the above mentioned limitations [@nickersonNullHypothesisSignificance2000; @dienesUsingBayesGet2014; @altmanStatisticsNotesAbsence1995a].
 
+\newpage
 # Objectives
 
 In this systematic review with meta-analysis, we examine the available literature to answer the following questions:
@@ -60,36 +61,94 @@ This systematic review has been registered at the PROSPERO (código do registro 
 
 ## Eligibility criteria
 
-In this review, we focus on major depressive disorder with psychotic features. Eligible studies must include patients with this diagnosis who underwent a cognitive assessment of an established neuropsychological domain.
+In this review, we focus on individuals with major depressive disorder with psychotic features, diagnosed by a Diagnostic and Statistical Manual of Mental Disorders or International Classification of Diseases assessment. Eligible studies must include patients with this diagnosis who underwent a cognitive assessment of an established neuropsychological domain.
 
 ### Types of studies
 
-We include studies with a quantitative approach, which measure neuropsychological performance with standardized tests and tasks. To allow for an estimation of differences, subjects with PMDD must be compared to a sample of patients with MDD or other psychotic disorders, such as schizophrenia and psychotic bipolar depression.
+We include studies with a quantitative approach of all designs, which measure neuropsychological performance with standardized tests and tasks. To allow for an estimation of differences, subjects with PMDD must be compared to a sample of patients with MDD or other psychotic disorders, such as schizophrenia and psychotic bipolar depression. Different study designs will be assessed as possible moderators of study effect size.
 
 ### Exclusion Criteria
 
+We will exclude studies that: included participants who were given concomitant treatments that may affect neuropsychological performance, such as electroconvulsive therapy and brain stimulation procedures; included participants with co-morbid diagnosis of physical illnesses that may especially impair neuropsychological performance, or studies that included participants with co-morbid psychiatric conditions that would be classified as axis I or axis II disorders, such as substance abuse or dementia.
+
+### Search Strategy
+
+The search for relevant studies will be conducted in the Embase and PubMed databases. Search strings tailored for the specific thesaurus of each database will include terms for *'depression'*, *'psychosis'*, and *'neuropsychology'*.
+
+ - The following search string will be used in the *Embase* database:
+ 
+    - 'depression'/exp AND ('depressive psychosis'/exp OR 'psychosis'/exp) AND 'neuropsychological test'/exp;
+ 
+ 
+ - For the *PubMed* database, we will use the following search string:
+ 
+    - ("depressive disorder"[MeSH Terms] OR "depression"[MeSH Terms] OR depression[Text Word]) AND ("Cognition"[Mesh] OR "Neuropsychological Tests"[Mesh] OR "Neuropsychology"[Mesh]) AND ("Affective Disorders, Psychotic"[Mesh] OR "Psychotic Disorders"[Mesh]).
+
+### Study selection
+
+Studies will be included in the quantitative and qualitative synthesis in three steps. First, articles will be retrieved from each database and organized on a Zotero [@corporationfordigitalscholarshipZotero2016] online group folder so duplicates can be removed and retracted articles excluded. Two researchers then screen all titles and abstracts independently, selecting which studies will be fully screened. At the last selection step, two researchers will screen all of the full manuscripts and determine if a study will or not be included. Any discrepancies will be resolved by consensus, erring on the side of a liberal approach to inclusion up until full manuscript screening.
+
 ### Data Extraction
 
-#### Measures of effect size
+Data within included studies will be extracted in two main steps. First, two researchers will extract all study data independently and store in an individual dataset. At this point, we will look for measures of neuropsychological performance that summarize results for each group within included studies. If data that allows transformation to a measure of effect size are not directly available, we will try to extract these effects from *F* and *t* statistics [@lakensCalculatingReportingEffect2013]. If it is not possible to extract measures of effect size from the manuscripts, we will look to previous meta-analysis and check if these effects are reported. In case no information is available, we will contact the study authors and ask for the data and any necessary additional information they may have stored. As a second step, after data is independently extracted by two researchers, we will resolve any discrepancies by consensus.
 
 #### Moderators
 
-## Using a bayesian meta-analysis to assess the available evidence
+Moderating variables to be used in exploratory meta-regression analyses will be coded based on which variables are consistently available. Although it is not possible to determine which variables will be coded *a priori*, we will at the very least code study variables of study design (*retrospective*, *prospective*), study sample (*community*, *representative*, *outpatient*), and neuropsychological testing strategy (*paper and pencil*, *digital*, *different tests or single battery*). If possible, clinical and sociodemographic moderating variables will be extracted (*age*, *diagnosis of control group*, *education*, and others).
 
-A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. These advantages extend to the use of bayesian meta-regression (hierarchical random-effects models) to measure the possible clinical and sociodemographical moderators. In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD.
+#### Outcome selection
 
-## Bayesian Location-Scale Meta-Analysis
+We will focus on measures of neuropsychological performance that are present for the PMDD group and the comparison group or groups. It is not possible to predetermine which neuropsychological functions will be extracted, so data will be analyzed following an exploratory process. First, all relevant data will be extracted and coded in neuropsychological domains as reported by study authors. We expect major heterogeneity between studies, so we will attempt to group different, and less common domains, under more common umbrella terms. As an example, if two studies report measures of verbal working memory, two report measures of cognitive flexibility and three of inhibitory control, these variables will be coded as *Executive Functions*. Each test and neuropsychological domain used in the meta-analysis will be fully described in the final manuscript and in the analysis code. If a study reports multiple measures for a single domain, the test or task that is most frequently reported for that specific domain will be included in the meta-analysis. As a minimum, we expect to cluster neuropsychological tests in domains of *Reasoning*, *Attention*, *Executive Functions*, *Memory*, and *Language*.
 
-A bayesian location-scale meta-analysis will be conducted using the r package `blsmeta` [@williamsPuttingVariationVariance2021].
+## Data synthesis
 
-### Bayesian Meta-Regression: Hierarchical Mixed-Effects Models
+### Using a bayesian meta-analysis to assess the available evidence
 
-Meta-Regression is a statistical tool to assess the effects of pooled study-level factors, such as age, gender and psychiatric comorbidity. In this systematic review, we will focus on possible effects of VARIÁVEIS to be assessed by a Bayesian Hierarchical Model run on the `blsmeta` package.
+A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. In other words, this means that in a Bayesian framework we can directly assess the probability for values of mean effect ($\$mu$) and heterogeneity ($\tau$) that are below or above a given threshold. These advantages extend to the use of bayesian meta-regression to measure the possible clinical and sociodemographical moderators.
 
-### Between-study variance ($\tau^2$)
+In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD. To this end, we will conduct a Bayesian random-effects meta-analysis, or *normal-normal hierarchical model*, via the `bayesmeta` **R** package [@roverBayesianRandomEffectsMetaAnalysis2020].
 
+\newpage
+### Prior specification - Effect parameter $\mu$
 
+We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \@ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
 
+```{r ggdist-priors, fig.cap = "Weakly and Informative Priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+library(brms)
+library(ggdist)
+
+priors <- c(prior(normal(0, .5), class = "d", coef = "x1"),
+            prior(normal(-0.3, 0.2), class = "d", coef = "x2"),
+            prior(uniform(-1, 1)))
+priors %>% parse_dist(priors) %>% 
+            ggplot(aes(y = prior,
+                       dist = .dist,
+                       args = .args,
+                       fill = prior),
+                   size = 1)+
+            scale_fill_brewer(palette = "Dark2",
+                              labels = c("Informative",
+                                         "Weakly Informative",
+                                         "Uniform"),
+                              name = "Priors")+
+            scale_x_continuous(name = element_blank())+
+            stat_dist_halfeye(.width = .95)+
+            theme_minimal()+
+            theme(text = element_text(family = "serif"),
+                  axis.text.y = element_text(face = "bold"))
+```
+
+### Prior specification - Heterogeneity parameter $\tau$
+
+We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.5)}$. This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution and offers an ***proper weakly informative prior*** for the heterogeneity parameter.
+
+### Exploratory analysis
+
+We will conduct exploratory analysis to estimate the extent to which moderators of interest to the literature may influence results. We will explore the relationship between clinical factors (such as age and symptom severity), sociodemographical variables (level of education, socioeconomic status), and differences in performance on measures of neuropsychological functioning between individuals with PMDD and comparison groups. The effects of moderators on SMDs will be assessed by bayesian hierarchical models (meta-regression) procedures as implemented in the `bayesmeta` package.
+
+## Publication bias
+
+To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most acurate results possible given the amount of information that is available at the time of data synthesis.
 
 \newpage
 # References
