@@ -104,7 +104,7 @@ We will focus on measures of neuropsychological performance that are present for
 
 ### Using a bayesian meta-analysis to assess the available evidence
 
-A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. In other words, this means that in a Bayesian framework we can directly assess the probability for values of mean effect ($\$mu$) and heterogeneity ($\tau$) that are below or above a given threshold. These advantages extend to the use of bayesian meta-regression to measure the possible clinical and sociodemographical moderators.
+A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. In other words, this means that in a Bayesian framework we can directly assess the probability for values of mean effect ($\mu$) and heterogeneity ($\tau$) that are below or above a given threshold. These advantages extend to the use of bayesian meta-regression to measure the possible clinical and sociodemographical moderators.
 
 In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD. To this end, we will conduct a Bayesian random-effects meta-analysis, or *normal-normal hierarchical model*, via the `bayesmeta` **R** package [@roverBayesianRandomEffectsMetaAnalysis2020].
 
@@ -113,7 +113,7 @@ In sum, a fully bayesian framework offers a clearer picture of current evidence,
 
 We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \@ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
 
-```{r ggdist-priors, fig.cap = "Weakly and Informative Priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+```{r ggdist-priors, fig.cap = "Weakly, Informative and Uniform priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
 library(brms)
 library(ggdist)
 
@@ -126,21 +126,29 @@ priors %>% parse_dist(priors) %>%
                        args = .args,
                        fill = prior),
                    size = 1)+
-            scale_fill_brewer(palette = "Dark2",
+            scale_fill_brewer(palette = "Pastel1",
                               labels = c("Informative",
                                          "Weakly Informative",
                                          "Uniform"),
                               name = "Priors")+
-            scale_x_continuous(name = element_blank())+
-            stat_dist_halfeye(.width = .95)+
-            theme_minimal()+
+            scale_y_discrete(name = "Priors",
+                             labels = c("Normal (-0.3, 0.2)",
+                                        "Normal (0, 0.5)",
+                                        "Uniform (-1, 1)"))+
+            stat_dist_halfeye()+
+            theme_classic()+
             theme(text = element_text(family = "serif"),
-                  axis.text.y = element_text(face = "bold"))
+                  axis.text.y = element_text(face = "bold",
+                                             size = 12),
+                  axis.title.y = element_text(face = "bold",
+                                              size = 14,
+                                              hjust = .44),
+                  axis.title.x = element_blank())
 ```
 
 ### Prior specification - Heterogeneity parameter $\tau$
 
-We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.5)}$. This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution and offers an ***proper weakly informative prior*** for the heterogeneity parameter.
+We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.5)}$. This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution and offers a ***proper weakly informative prior*** for the heterogeneity parameter.
 
 ### Exploratory analysis
 
@@ -148,7 +156,7 @@ We will conduct exploratory analysis to estimate the extent to which moderators 
 
 ## Publication bias
 
-To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most acurate results possible given the amount of information that is available at the time of data synthesis.
+To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most accurate results possible given the amount of information that is available at the time of data synthesis. Both evidences *for* (in case an effect is likely) and *against* (in case effects are unlikely) a moderator effect will be summarized by Bayes Factors.
 
 \newpage
 # References
