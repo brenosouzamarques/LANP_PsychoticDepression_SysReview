@@ -111,11 +111,14 @@ In sum, a fully bayesian framework offers a clearer picture of current evidence,
 \newpage
 ### Prior specification - Effect parameter $\mu$
 
-We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \@ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
+We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
 
 ```{r ggdist-priors, fig.cap = "Weakly, Informative and Uniform priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+library(extraDistr)
+library(tidyverse)
 library(brms)
 library(ggdist)
+set.seed(25102009)
 
 priors <- c(prior(normal(0, .5), class = "d", coef = "x1"),
             prior(normal(-0.3, 0.2), class = "d", coef = "x2"),
@@ -146,9 +149,26 @@ priors %>% parse_dist(priors) %>%
                   axis.title.x = element_blank())
 ```
 
+\newpage
 ### Prior specification - Heterogeneity parameter $\tau$
 
-We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.5)}$. This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution and offers a ***proper weakly informative prior*** for the heterogeneity parameter.
+We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.25)}$ (See figure \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution and offers a ***proper weakly informative prior*** for the heterogeneity parameter.
+
+```{r tauprior, fig.cap = "Weakly informative heterogeneity prior", fig.align='center', warning = F, message = F, echo = F, out.width='60%'}
+
+wk_prior <- extraDistr::rhcauchy(n = 10000, sigma = 0.25)
+tribble(~x,
+        wk_prior) %>% unnest(x) %>% ggplot()+
+            geom_density(aes(x = x),
+                         fill = "lightblue",
+                         color = "lightblue")+
+            xlim(0, 1)+
+            theme_classic()+
+            labs(x = element_blank())+
+            theme(axis.title.y = element_text(size = 12, face = "bold"),
+                  text = element_text(family = "serif"))
+
+```
 
 ### Exploratory analysis
 
