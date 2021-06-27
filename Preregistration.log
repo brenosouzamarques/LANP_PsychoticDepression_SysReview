@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.26)  26 JUN 2021 19:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.26)  26 JUN 2021 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -642,229 +642,243 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 108.
+(./Preregistration.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 2.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 2.
+)
+\tf@toc=\write4
+\openout4 = `Preregistration.toc'.
+
 [1
 
 {c:/Users/Breno/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
-x.map}]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 124.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 124.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 124.
-[2] [3] [4]
+x.map}] [2] [3] [4]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
 20.
 (c:/Users/Breno/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [5]
 
-LaTeX Warning: Reference `(' on page 6 undefined on input line 227.
+LaTeX Warning: Reference `(' on page 6 undefined on input line 225.
 
-<Preregistration_files/figure-latex/ggdist-priors-1.pdf, id=158, 469.755pt x 32
+<Preregistration_files/figure-latex/ggdist-priors-1.pdf, id=135, 469.755pt x 32
 5.215pt>
 File: Preregistration_files/figure-latex/ggdist-priors-1.pdf Graphic file (type
  pdf)
 <use Preregistration_files/figure-latex/ggdist-priors-1.pdf>
 Package pdftex.def Info: Preregistration_files/figure-latex/ggdist-priors-1.pdf
-  used on input line 231.
+  used on input line 229.
 (pdftex.def)             Requested size: 401.22897pt x 277.7739pt.
 [6 <./Preregistration_files/figure-latex/ggdist-priors-1.pdf>]
-<Preregistration_files/figure-latex/tauprior-1.pdf, id=178, 469.755pt x 325.215
+<Preregistration_files/figure-latex/tauprior-1.pdf, id=160, 469.755pt x 325.215
 pt>
 File: Preregistration_files/figure-latex/tauprior-1.pdf Graphic file (type pdf)
 
 <use Preregistration_files/figure-latex/tauprior-1.pdf>
 Package pdftex.def Info: Preregistration_files/figure-latex/tauprior-1.pdf  use
-d on input line 247.
-(pdftex.def)             Requested size: 283.21707pt x 196.07335pt.
+d on input line 245.
+(pdftex.def)             Requested size: 401.22897pt x 277.7739pt.
 [7 <./Preregistration_files/figure-latex/tauprior-1.pdf>]
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 272--275
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 270--273
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--275
+Underfull \hbox (badness 10000) in paragraph at lines 270--273
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 276--279
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 274--277
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--279
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 280--283
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 278--281
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--283
+Underfull \hbox (badness 10000) in paragraph at lines 278--281
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 284--287
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 282--285
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--287
+Underfull \hbox (badness 10000) in paragraph at lines 282--285
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 288--291
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 286--289
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--291
+Underfull \hbox (badness 10000) in paragraph at lines 286--289
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 292--295
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 290--293
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--295
+Underfull \hbox (badness 10000) in paragraph at lines 290--293
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 296--299
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 294--297
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--299
+Underfull \hbox (badness 10000) in paragraph at lines 294--297
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 300--303
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 298--301
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--303
+Underfull \hbox (badness 10000) in paragraph at lines 298--301
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 304--307
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 302--305
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--307
+Underfull \hbox (badness 10000) in paragraph at lines 302--305
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 308--311
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 306--309
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--311
-
- []
-
-
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 312--315
-[][][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--315
-
- []
-
-
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 316--319
-[][][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--319
-
- []
-
-
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 320--323
-[][][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 320--323
-
- []
-
-
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 324--327
-[][][] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 324--327
+Underfull \hbox (badness 10000) in paragraph at lines 306--309
 
  []
 
 [8]
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 328--331
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 310--313
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--331
+Underfull \hbox (badness 10000) in paragraph at lines 310--313
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 332--335
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 314--317
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--335
+Underfull \hbox (badness 10000) in paragraph at lines 314--317
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 336--339
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 318--321
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--339
+Underfull \hbox (badness 10000) in paragraph at lines 318--321
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 340--343
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 322--325
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--343
+Underfull \hbox (badness 10000) in paragraph at lines 322--325
 
  []
 
 
-Overfull \hbox (2.61107pt too wide) in paragraph at lines 344--347
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 326--329
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--347
+Underfull \hbox (badness 10000) in paragraph at lines 326--329
+
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 330--333
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--333
+
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 334--337
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--337
+
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 338--341
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--341
+
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 342--345
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--345
+
+ []
+
+
+Overfull \hbox (2.61107pt too wide) in paragraph at lines 346--349
+[][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--349
 
  []
 
@@ -873,14 +887,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 344--347
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Preregistration.out' has not changed.
-(rerunfilecheck)             Checksum: 365F628DADA95EDC044FCCFA9FA2BE29;3183.
+(rerunfilecheck)             Checksum: E7D4FB795AC80D953057CE4EFCD73C45;1221.
  ) 
 Here is how much of TeX's memory you used:
- 12686 strings out of 480479
- 194145 string characters out of 5897631
- 533159 words of memory out of 5000000
- 29902 multiletter control sequences out of 15000+600000
- 491380 words of font info for 179 fonts, out of 8000000 for 9000
+ 12685 strings out of 480479
+ 194103 string characters out of 5897631
+ 532135 words of memory out of 5000000
+ 29896 multiletter control sequences out of 15000+600000
+ 491422 words of font info for 179 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,11n,66p,1284b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/Breno/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.e
@@ -904,10 +918,10 @@ o/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb><c:/Users
 /Breno/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/
 Users/Breno/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt12.pfb
 >
-Output written on Preregistration.pdf (9 pages, 313309 bytes).
+Output written on Preregistration.pdf (9 pages, 321937 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
- 51347 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 301 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 51275 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -11,7 +11,7 @@ author: |
 abstract: This is a protocol for a systematic review with meta-analysis. This systematic review is focused on summarizing, and critically assessing, the available evidence both *for* and *against* a neuropsychological endophenotype of individuals with psychotic major depressive disorder. To this end, we will conduct a systematic appraisal of the literature, followed by a Bayesian meta-analysis and meta-regression. We follow the PRISMA-P guidelines for meta-analysis protocols [@shamseerPreferredReportingItems2015].
 output: 
     bookdown::pdf_document2:
-      toc: false
+      toc: true
       number_sections: TRUE
 classoption:
   - onecolumn
@@ -42,7 +42,6 @@ The latest study to assess neuropsychological performance differences between PM
 
 This brief review of the current evidence for a neuropsychological endophenotype that can differentiate PMDD from MDD patients shows that the meta-analytic studies conducted so far faced some critical limitations. High heterogeneity and a small number of studies can impede researchers from clearly establishing a consistent and robust assessment of the reported effects. More importantly, results vary between meta-analytic studies over which neuropsychological functions are more significantly impaired in individuals with PMDD in comparison with MDD subjects. This means that non-significant *p*-values may have been taken as evidence of an absence of effect, when they may simply be an absence of evidence in face of the above mentioned limitations [@nickersonNullHypothesisSignificance2000; @dienesUsingBayesGet2014; @altmanStatisticsNotesAbsence1995a].
 
-\newpage
 # Objectives
 
 In this systematic review with meta-analysis, we examine the available literature to answer the following questions:
@@ -56,8 +55,6 @@ In this systematic review with meta-analysis, we examine the available literatur
 We set out to answer these questions with a Bayesian meta-analysis and meta-regression. New variables of interest may be included if found to help better understand the available evidence. A critical, qualitative appraisal of the literature is also warranted, and should help to identify current gaps, inconsistencies and limitations of relevant studies.
 
 # Methods
-
-This systematic review has been registered at the PROSPERO (código do registro aqui) database for systematic reviews. The following information is also available at (LINK DO PROSPERO).
 
 ## Eligibility criteria
 
@@ -108,10 +105,9 @@ A fully bayesian framework may offer significant advantages over a frequentist m
 
 In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD. To this end, we will conduct a Bayesian random-effects meta-analysis, or *normal-normal hierarchical model*, via the `bayesmeta` **R** package [@roverBayesianRandomEffectsMetaAnalysis2020].
 
-\newpage
 ### Prior specification - Effect parameter $\mu$
 
-We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
+We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (-1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
 
 ```{r ggdist-priors, fig.cap = "Weakly, Informative and Uniform priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
 library(extraDistr)
@@ -133,7 +129,7 @@ priors %>% parse_dist(priors) %>%
                               labels = c("Informative",
                                          "Weakly Informative",
                                          "Uniform"),
-                              name = "Priors")+
+                              name = expression(Mean(mu)))+
             scale_y_discrete(name = "Priors",
                              labels = c("Normal (-0.3, 0.2)",
                                         "Normal (0, 0.5)",
@@ -146,27 +142,52 @@ priors %>% parse_dist(priors) %>%
                   axis.title.y = element_text(face = "bold",
                                               size = 14,
                                               hjust = .44),
-                  axis.title.x = element_blank())
+                  axis.title.x = element_blank(),
+                  legend.text = element_text(face = "bold",
+                                             size = 12),
+                  legend.title = element_text(face = "bold",
+                                              size = 13))
 ```
 
 \newpage
 ### Prior specification - Heterogeneity parameter $\tau$
 
-We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.25)}$ (See figure \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution and offers a ***proper weakly informative prior*** for the heterogeneity parameter.
+We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.25)}$ (See figure \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution, and offers a ***proper weakly informative prior*** for the heterogeneity parameter with 70% of expected values between 0 and 0.5 [@roverWeaklyInformativePrior2021]. As a sensitivity check, we will rerun the analyses with two other parameters: an intermediate prior with scale set to $\tau \sim \mbox{half-Cauchy(0.5)}$, and a less informative prior with scale set to $\tau \sim \mbox{half-Cauchy(1)}$.
 
-```{r tauprior, fig.cap = "Weakly informative heterogeneity prior", fig.align='center', warning = F, message = F, echo = F, out.width='60%'}
+```{r tauprior, fig.cap = "Heterogeneity priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
 
-wk_prior <- extraDistr::rhcauchy(n = 10000, sigma = 0.25)
-tribble(~x,
-        wk_prior) %>% unnest(x) %>% ggplot()+
-            geom_density(aes(x = x),
-                         fill = "lightblue",
-                         color = "lightblue")+
-            xlim(0, 1)+
+prior_tau <- c(prior(cauchy(0, 1), class = sd),
+            prior(cauchy(0, 0.5), class = sd),
+            prior(cauchy(0, 0.25), class = sd))
+
+
+
+prior_tau %>% parse_dist(prior_tau) %>% 
+            ggplot(aes(y = prior,
+                         dist = .dist,
+                         args = .args,
+                       fill = prior))+
+            stat_dist_slab()+
+            xlim(0, 1.5)+
+            scale_fill_brewer(palette = "Dark2",
+                              name = expression(Heterogeneity(tau)),
+                              labels = c("Prior ~ Half-Cauchy (0.25)",
+                                         "Prior ~ Half-Cauchy (0.5)",
+                                         "Prior ~ Half-Cauchy (1)"))+
+            scale_y_discrete(labels = element_blank(),
+                             name = "Prior")+
             theme_classic()+
             labs(x = element_blank())+
-            theme(axis.title.y = element_text(size = 12, face = "bold"),
-                  text = element_text(family = "serif"))
+            theme(text = element_text(family = "serif"),
+                  axis.text.y = element_text(face = "bold",
+                                             size = 12),
+                  axis.title.y = element_text(face = "bold",
+                                              size = 14,
+                                              hjust = .44),
+                  legend.text = element_text(face = "bold",
+                                             size = 12),
+                  legend.title = element_text(face = "bold",
+                                              size = 13))
 
 ```
 
@@ -174,9 +195,10 @@ tribble(~x,
 
 We will conduct exploratory analysis to estimate the extent to which moderators of interest to the literature may influence results. We will explore the relationship between clinical factors (such as age and symptom severity), sociodemographical variables (level of education, socioeconomic status), and differences in performance on measures of neuropsychological functioning between individuals with PMDD and comparison groups. The effects of moderators on SMDs will be assessed by bayesian hierarchical models (meta-regression) procedures as implemented in the `bayesmeta` package.
 
+\newpage
 ## Publication bias
 
 To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most accurate results possible given the amount of information that is available at the time of data synthesis. Both evidences *for* (in case an effect is likely) and *against* (in case effects are unlikely) a moderator effect will be summarized by Bayes Factors.
 
-\newpage
+
 # References
