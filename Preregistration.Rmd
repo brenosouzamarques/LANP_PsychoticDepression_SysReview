@@ -1,7 +1,7 @@
 ---
 title: "**Neuropsychological profile of Unipolar Major Depression with psychotic features:** protocol for a systematic review and bayesian meta-analysis"
 author: |
-  | Natália Canário$^a$
+  | Natália Canário-Gomes$^a$
   | Breno Souza-Marques$^a$$^b$
   | Aline S. Sampaio$^a$$^b$
   | Lucas C. Quarantini$^a$$^b$^[Corresponding author: Lucas C. Quarantini lcq@ufba.br]
@@ -11,7 +11,7 @@ author: |
 abstract: This is a protocol for a systematic review with meta-analysis. This systematic review is focused on summarizing, and critically assessing, the available evidence both *for* and *against* a neuropsychological endophenotype of individuals with psychotic major depressive disorder. To this end, we will conduct a systematic appraisal of the literature, followed by a Bayesian meta-analysis and meta-regression. We follow the PRISMA-P guidelines for meta-analysis protocols [@shamseerPreferredReportingItems2015].
 output: 
     bookdown::pdf_document2:
-      toc: true
+      toc: false
       number_sections: TRUE
 classoption:
   - onecolumn
@@ -42,6 +42,7 @@ The latest study to assess neuropsychological performance differences between PM
 
 This brief review of the current evidence for a neuropsychological endophenotype that can differentiate PMDD from MDD patients shows that the meta-analytic studies conducted so far faced some critical limitations. High heterogeneity and a small number of studies can impede researchers from clearly establishing a consistent and robust assessment of the reported effects. More importantly, results vary between meta-analytic studies over which neuropsychological functions are more significantly impaired in individuals with PMDD in comparison with MDD subjects. This means that non-significant *p*-values may have been taken as evidence of an absence of effect, when they may simply be an absence of evidence in face of the above mentioned limitations [@nickersonNullHypothesisSignificance2000; @dienesUsingBayesGet2014; @altmanStatisticsNotesAbsence1995a].
 
+\newpage
 # Objectives
 
 In this systematic review with meta-analysis, we examine the available literature to answer the following questions:
@@ -70,7 +71,7 @@ We will exclude studies that: included participants who were given concomitant t
 
 ### Search Strategy
 
-The search for relevant studies will be conducted in the Embase and PubMed databases. Search strings tailored for the specific thesaurus of each database will include terms for *'depression'*, *'psychosis'*, and *'neuropsychology'*.
+The search for relevant studies will be conducted in the Embase, PsycInfo and PubMed databases. Search strings tailored for the specific thesaurus of each database include terms for *'depression'*, *'psychosis'*, and *'neuropsychology'* or *'cognition'*.
 
  - The following search string will be used in the *Embase* database:
  
@@ -79,11 +80,15 @@ The search for relevant studies will be conducted in the Embase and PubMed datab
  
  - For the *PubMed* database, we will use the following search string:
  
-    - ("depressive disorder"[MeSH Terms] OR "depression"[MeSH Terms] OR depression[Text Word]) AND ("Cognition"[Mesh] OR "Neuropsychological Tests"[Mesh] OR "Neuropsychology"[Mesh]) AND ("Affective Disorders, Psychotic"[Mesh] OR "Psychotic Disorders"[Mesh]).
+    - ("depressive disorder"[MeSH Terms] OR "depression"[MeSH Terms] OR depression[Text Word]) AND ("Cognition"[Mesh] OR "Neuropsychological Tests"[Mesh] OR "Neuropsychology"[Mesh]) AND ("Affective Disorders, Psychotic"[Mesh] OR "Psychotic Disorders"[Mesh]);
+    
+ - For the *PsycInfo* database, the following search terms will be used:
+    
+    - Any Field: Major Depression AND Psychosis AND Cognition.
 
 ### Study selection
 
-Studies will be included in the quantitative and qualitative synthesis in three steps. First, articles will be retrieved from each database and organized on a Zotero [@corporationfordigitalscholarshipZotero2016] online group folder so duplicates can be removed and retracted articles excluded. Two researchers then screen all titles and abstracts independently, selecting which studies will be fully screened. At the last selection step, two researchers will screen all of the full manuscripts and determine if a study will or not be included. Any discrepancies will be resolved by consensus, erring on the side of a liberal approach to inclusion up until full manuscript screening.
+Studies from 1980 onward will be included in the quantitative and qualitative synthesis in three steps. First, articles will be retrieved from each database and organized on a Zotero [@corporationfordigitalscholarshipZotero2016] online group folder so duplicates can be removed and retracted articles excluded. Two researchers then screen all titles and abstracts independently, selecting which studies will be fully screened. At the last selection step, two researchers will screen all of the full manuscripts and determine if a study will or not be included. Any discrepancies will be resolved by consensus, erring on the side of a liberal approach to inclusion up until full manuscript screening.
 
 ### Data Extraction
 
@@ -101,20 +106,22 @@ We will focus on measures of neuropsychological performance that are present for
 
 ### Using a bayesian meta-analysis to assess the available evidence
 
-A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. In other words, this means that in a Bayesian framework we can directly assess the probability for values of mean effect ($\mu$) and heterogeneity ($\tau$) that are below or above a given threshold. These advantages extend to the use of bayesian meta-regression to measure the possible clinical and sociodemographical moderators.
+A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. In other words, this means that in a Bayesian framework we can directly assess the probability for values of effect ($\mu$) and heterogeneity ($\tau$) that are below or above a given threshold. These advantages extend to the use of bayesian meta-regression to measure the influence of candidate clinical and sociodemographical moderators. In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD. To this end, we will conduct a Bayesian random-effects meta-analysis, or *normal-normal hierarchical model* (NNHM), via the `bayesmeta` **R** package [@roverBayesianRandomEffectsMetaAnalysis2020].
 
-In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD. To this end, we will conduct a Bayesian random-effects meta-analysis, or *normal-normal hierarchical model*, via the `bayesmeta` **R** package [@roverBayesianRandomEffectsMetaAnalysis2020].
+A Bayesian framework requires that prior beliefs about the data are made explicitly clear. These are presented not as point estimates but as parameters that have probability distributions. In the context of a meta-analysis, we are mostly concerned with three parameters: **$\mu_i$**, the mean of effects derived from point estimates within included studies $i$; **$\tau^2$**, the heterogeneity parameter that quantifies how within-study effects vary from one study to the other; and **$\theta$**, which represents a distribution of the 'true' effect that is **$\sim N(\mu, \sigma)$**. Further information on Bayesian meta-analysis and parameters of interest is available elsewhere [@roverBayesianRandomEffectsMetaAnalysis2020; @roverWeaklyInformativePrior2021; @williamsBayesianMetaAnalysisWeakly2018].
 
-### Prior specification - Effect parameter $\mu$
+\newpage
 
-We will use a ***weakly informative prior*** that is normally distributed, so that the main effect $\sim N(\mu, \sigma^2)$ with a location parameter of **0** and a scale of **.5** (See figure \ref(fig:ggdist-priors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed $N \sim \mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior $\mbox{Uniform} \sim (-1, 1)$ will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
+### Prior specification - Effect parameter $\mu$ {#maineffect}
 
-```{r ggdist-priors, fig.cap = "Weakly, Informative and Uniform priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+We will use a ***weakly informative prior*** that is normally distributed, so that the main effect **$\sim N(\mu, \sigma^2)$** with a location parameter of **0** and a scale of **.5** (See figure \@ref(fig:ggdistpriors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed **$N \sim \mbox{(-0.3, 0.2)}$**, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior **$\sim (-1, 1)$** will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
+
+```{r ggdistpriors, fig.cap = "Weakly, Informative and Uniform priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
 library(extraDistr)
 library(tidyverse)
 library(brms)
 library(ggdist)
-set.seed(25102009)
+set.seed(2)
 
 priors <- c(prior(normal(0, .5), class = "d", coef = "x1"),
             prior(normal(-0.3, 0.2), class = "d", coef = "x2"),
@@ -149,17 +156,14 @@ priors %>% parse_dist(priors) %>%
                                               size = 13))
 ```
 
-\newpage
 ### Prior specification - Heterogeneity parameter $\tau$
 
-We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that $\tau \sim \mbox{half-Cauchy(0.25)}$ (See figure \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution, and offers a ***proper weakly informative prior*** for the heterogeneity parameter with 70% of expected values between 0 and 0.5 [@roverWeaklyInformativePrior2021]. As a sensitivity check, we will rerun the analyses with two other parameters: an intermediate prior with scale set to $\tau \sim \mbox{half-Cauchy(0.5)}$, and a less informative prior with scale set to $\tau \sim \mbox{half-Cauchy(1)}$.
+We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that **$\tau \sim \mbox{half-Cauchy(0.25)}$** (See figure \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution, and offers a ***proper weakly informative prior*** for the heterogeneity parameter with 70% of expected values between 0 and 0.5 [@roverWeaklyInformativePrior2021]. As a sensitivity check, we will rerun the analyses with a less informative prior with scale set to **$\tau \sim \mbox{half-Cauchy(1)}$**.
 
-```{r tauprior, fig.cap = "Heterogeneity priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+```{r tauprior, fig.cap = "Heterogeneity priors", fig.align='center', warning = F, message = F, echo = F, out.width='75%'}
 
 prior_tau <- c(prior(cauchy(0, 1), class = sd),
-            prior(cauchy(0, 0.5), class = sd),
-            prior(cauchy(0, 0.25), class = sd))
-
+            prior(cauchy(0, 0.5), class = sd))
 
 
 prior_tau %>% parse_dist(prior_tau) %>% 
@@ -171,8 +175,7 @@ prior_tau %>% parse_dist(prior_tau) %>%
             xlim(0, 1.5)+
             scale_fill_brewer(palette = "Dark2",
                               name = expression(Heterogeneity(tau)),
-                              labels = c("Prior ~ Half-Cauchy (0.25)",
-                                         "Prior ~ Half-Cauchy (0.5)",
+                              labels = c("Prior ~ Half-Cauchy (0.5)",
                                          "Prior ~ Half-Cauchy (1)"))+
             scale_y_discrete(labels = element_blank(),
                              name = "Prior")+
@@ -191,14 +194,62 @@ prior_tau %>% parse_dist(prior_tau) %>%
 
 ```
 
+\newpage
+
+From the combination of priors for **$\mu$** and **$\tau$**, a total of six meta-models will be conducted, two for each of the three priors of for the effect and the two priors for heterogeneity. The values of **$\theta$** from the combination of the Uniform and Informative priors for the effect with both priors for heterogeneity (four in total), will be considered as exploratory sensitivity analysis for our main model (See \@ref(fig:thetaprior)). The latter consists of the Weakly Informative prior for **$\mu$**, as was previously described in \@ref(maineffect) of this preregistration protocol. We aim to include all models for the sensitivity analysis as supplemental material to the future manuscript.
+
+```{r thetaprior, fig.cap = "$\\theta$ prior distributions for $\\tau \\sim \\mbox{half-Cauchy(0.5)}$ and every prior for $\\mu$", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+
+
+mu_1 <- rnorm(n = 10000, mean = 0, sd = 0.5)
+tau_1 <- extraDistr::rhcauchy(n = 10000, sigma = 0.25)
+theta_1 <- rnorm(n = 10000, mean = mu_1, sd = tau_1)
+
+
+mu_2 <- rnorm(n = 10000, mean = 0.3, sd = 0.2)
+theta_2 <- rnorm(n = 10000, mean = mu_2, sd = tau_1)
+
+mu_3 <- runif(n = 10000, min = -1, max = 1)
+theta_3 <- rnorm(n = 10000, mean = mu_3, sd = tau_1)
+tribble(~theta, ~value,
+        "Weakly Informative", theta_1,
+        "Informative", theta_2,
+        "Uniform", theta_3) %>% 
+            unnest(value) %>% 
+            ggplot(aes(x = value,
+                       fill = theta,
+                       color = theta))+
+            geom_density(alpha = .7,
+                         show.legend = FALSE)+
+            geom_vline(xintercept = 0,
+                       linetype = "dashed",
+                       color = "grey")+
+            facet_grid(cols = vars(theta))+
+            scale_x_continuous(limits = c(-2, 2),
+                               breaks = seq(-2,
+                                            2,
+                                            1))+
+            scale_fill_brewer(palette = "Dark2")+
+            scale_color_brewer(palette = "Dark2")+
+            theme_classic()+
+            labs(x = element_blank(),
+                 fill = expression(paste("Theta", (theta))))+
+            theme(axis.title.y = element_text(size = 14, face = "bold"),
+                  axis.text.x = element_text(size = 13),
+                  text = element_text(family = "serif"))
+```
+
 ### Exploratory analysis
 
 We will conduct exploratory analysis to estimate the extent to which moderators of interest to the literature may influence results. We will explore the relationship between clinical factors (such as age and symptom severity), sociodemographical variables (level of education, socioeconomic status), and differences in performance on measures of neuropsychological functioning between individuals with PMDD and comparison groups. The effects of moderators on SMDs will be assessed by bayesian hierarchical models (meta-regression) procedures as implemented in the `bayesmeta` package.
 
-\newpage
 ## Publication bias
 
 To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most accurate results possible given the amount of information that is available at the time of data synthesis. Both evidences *for* (in case an effect is likely) and *against* (in case effects are unlikely) a moderator effect will be summarized by Bayes Factors.
 
+## Reproducibility and analysis code
 
+This preregistration protocol is publicly available in the Open Science Framework (OSF) repository where this protocol is registered at (https://osf.io/2wp5r/), together with the `R Markdown` file required to reproduce this material. As soon as the data synthesis procedure is concluded, the OSF repository will be updated with the analysis scripts, the dataset, and all of the necessary information to reproduce our methods.
+
+\newpage
 # References
