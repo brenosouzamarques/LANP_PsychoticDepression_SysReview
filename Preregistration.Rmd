@@ -108,15 +108,23 @@ We will focus on measures of neuropsychological performance that are present for
 
 A fully bayesian framework may offer significant advantages over a frequentist method given the previously discussed limitations in the available literature. The small number of studies at the time of these meta-analyses may have ruled out smaller but meaningful effects between PMDD and MDD groups on the basis of a non-significant *p*-value. In addition, use of the Bayes Factor [@wagenmakersBayesianHypothesisTesting2010] allows for the assessment of the available evidence both *for* and *against* an effect (i.e., evidence for the null hypothesis) between individuals with PMDD and MDD. In other words, this means that in a Bayesian framework we can directly assess the probability for values of effect ($\mu$) and heterogeneity ($\tau$) that are below or above a given threshold. These advantages extend to the use of bayesian meta-regression to measure the influence of candidate clinical and sociodemographical moderators. In sum, a fully bayesian framework offers a clearer picture of current evidence, and helps establish to which extent results support a neuropsychological endophenotype for individuals with PMDD. To this end, we will conduct a Bayesian random-effects meta-analysis, or *normal-normal hierarchical model* (NNHM), via the `bayesmeta` **R** package [@roverBayesianRandomEffectsMetaAnalysis2020].
 
-A Bayesian framework requires that prior beliefs about the data are made explicitly clear. These are presented not as point estimates but as parameters that have probability distributions. In the context of a meta-analysis, we are mostly concerned with three parameters: **$\mu_i$**, the mean of effects derived from point estimates within included studies $i$; **$\tau^2$**, the heterogeneity parameter that quantifies how within-study effects vary from one study to the other; and **$\theta$**, which represents a distribution of the 'true' effect that is **$\sim N(\mu, \sigma)$**. Further information on Bayesian meta-analysis and parameters of interest is available elsewhere [@roverBayesianRandomEffectsMetaAnalysis2020; @roverWeaklyInformativePrior2021; @williamsBayesianMetaAnalysisWeakly2018].
+A Bayesian framework requires that prior beliefs about the data are made explicitly clear. These are presented not as point estimates but as parameters that have probability distributions (i.e., a *mean* and a *variance*). In the context of a meta-analysis, we are mostly concerned with three parameters: **$\mu_i$**, the mean of effects derived from point estimates within included studies $i$; **$\tau^2$**, the heterogeneity parameter that quantifies how within-study effects vary from one study to the other; and **$\theta$**, which represents a distribution of the 'true' effect that is **$\theta \sim N(\mu, \sigma)$**. Further information on Bayesian meta-analysis and parameters of interest is available elsewhere [@roverBayesianRandomEffectsMetaAnalysis2020; @roverWeaklyInformativePrior2021; @williamsBayesianMetaAnalysisWeakly2018].
 
 \newpage
 
-### Prior specification - Effect parameter $\mu$ {#maineffect}
+### Prior specification - Overall mean effect $\mu$ {#maineffect}
 
-We will use a ***weakly informative prior*** that is normally distributed, so that the main effect **$\sim N(\mu, \sigma^2)$** with a location parameter of **0** and a scale of **.5** (See figure \@ref(fig:ggdistpriors)). This specification means that 95% of expected values lie between -1 and 1. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which gives a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an ***informative prior*** that is normally distributed **$N \sim \mbox{(-0.3, 0.2)}$**, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a ***uniform*** prior **$\sim (-1, 1)$** will also be used for comparison, which assumes that all possible values between -1 and 1 are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
+The first parameter of interest is the overall mean effect ($\mu$), for which various methods of prior selection are available [@roverWeaklyInformativePrior2021]. We will focus on three priors for the overall effect, a weakly informative prior and two others for comparison as a sensitivity analysis: an informative prior using information available from a previous meta-analysis, and a broad uniform prior (Eq. \@ref(eq:eq1)). The *weakly informative prior* $(\mu_{wk})$ that is normally distributed, so that the overall mean effect is seen as a parameter that has its own *mean* and *standard deviation* ($\sigma^2$). This gives a main effect $\mu_{wk} \sim N(0, 0.5)$ (Fig. \@ref(fig:ggdistpriors)) specified so that 68% of expected values lie between -0.5 and 0.5. As a sensitivity analysis, we look for the largest available meta-analysis in the field [@zaninottoCognitiveMarkersPsychotic2015], which found a mean difference for individuals with PMDD of -0.30 on a 95% confidence interval of -0.57 to -0.19. This gives a standard error of around $SE = 0.2$ [@greenCochraneCollaborationCochrane2011] which we will use as an *informative prior* $(\mu_{in})$ that is normally distributed $\mu_{in} \sim N\mbox{(-0.3, 0.2)}$, so that roughly 80% of expected values lie between -0.5 and 0.5. Finally, estimates from a *uniform prior* $(\mu_{un})$ with minimum values set to -1, and maximum values set to 1 will also be used for comparison, which assumes that all possible values in this range are equally likely *a priori*. Parameter estimates and model results will be compared analytically and with the aid of Bayes Factors.
+\begin{equation}
+\begin{split}
+\mu_{wk} \sim \mathrm{Normal}(0, 0.5) \\
+\mu_{in} \sim \mathrm{Normal}(-0.3, 0.2) \\
+\mu_{un} \sim \mathrm{Uniform}(-1, 1)
+\end{split}
+(\#eq:eq1)
+\end{equation}
 
-```{r ggdistpriors, fig.cap = "Weakly, Informative and Uniform priors", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+```{r ggdistpriors, fig.cap = "Weakly, Informative and Uniform priors for $\\mu$", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
 library(extraDistr)
 library(tidyverse)
 library(brms)
@@ -158,9 +166,16 @@ priors %>% parse_dist(priors) %>%
 
 ### Prior specification - Heterogeneity parameter $\tau$
 
-We expect heterogeneity values to vary substantially between studies, and thus, we will use a *half-Cauchy* prior for the heterogeneity parameter, such that **$\tau \sim \mbox{half-Cauchy(0.25)}$** (See figure \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution, and offers a ***proper weakly informative prior*** for the heterogeneity parameter with 70% of expected values between 0 and 0.5 [@roverWeaklyInformativePrior2021]. As a sensitivity check, we will rerun the analyses with a less informative prior with scale set to **$\tau \sim \mbox{half-Cauchy(1)}$**.
+In a normal-normal hierarchical model, we expect the mean effect $\mu_k$ to vary as each $k$ study measures the underlying 'true' value $\theta$. The second parameter of interest is a measure of the heterogeneity of effects, which will be incorporated in the meta-analysis as a variance component $\tau^2$. One approach is to choose an heterogeneity prior that is roughly uniform close to zero (implying indifference between small values for heterogeneity), and that decays as heterogeneity values increase [@roverWeaklyInformativePrior2021; @williamsBayesianMetaAnalysisWeakly2018], while still allowing for the possibility of larger values of $\tau$ (Eq. \@ref(eq:eq2)). A *half-Cauchy* prior for the heterogeneity parameter is an interesting option that seems to fit the requirements for a *weakly informative prior* $(\tau_{wk})$, such that $\tau \sim \mbox{half-Cauchy(0.5)}$ (Fig. \@ref(fig:tauprior)). This is a *Cauchy* distribution truncated at zero (constrained into a positive real value), which has a fatter tail than a half-normal distribution with 70% of expected values between 0 and 0.5 [@roverWeaklyInformativePrior2021]. As a sensitivity check, we will rerun the analyses with a less informative prior $(\tau_{li})$ set to $\tau_{li} \sim \mbox{half-Cauchy(1)}$.
+\begin{equation}
+\begin{split}
+\tau_{wk} \sim \mathrm{half-Cauchy(0.5)} \\
+\tau_{li} \sim \mathrm{half-Cauchy(1)}
+\end{split}
+(\#eq:eq2)
+\end{equation}
 
-```{r tauprior, fig.cap = "Heterogeneity priors", fig.align='center', warning = F, message = F, echo = F, out.width='75%'}
+```{r tauprior, fig.cap = "Heterogeneity priors for $\\tau$", fig.align='center', warning = F, message = F, echo = F, out.width='75%'}
 
 prior_tau <- c(prior(cauchy(0, 1), class = sd),
             prior(cauchy(0, 0.5), class = sd))
@@ -173,7 +188,7 @@ prior_tau %>% parse_dist(prior_tau) %>%
                        fill = prior))+
             stat_dist_slab()+
             xlim(0, 1.5)+
-            scale_fill_brewer(palette = "Dark2",
+            scale_fill_brewer(palette = "Accent",
                               name = expression(Heterogeneity(tau)),
                               labels = c("Prior ~ Half-Cauchy (0.5)",
                                          "Prior ~ Half-Cauchy (1)"))+
@@ -196,9 +211,9 @@ prior_tau %>% parse_dist(prior_tau) %>%
 
 \newpage
 
-From the combination of priors for **$\mu$** and **$\tau$**, a total of six meta-models will be conducted, two for each of the three priors of for the effect and the two priors for heterogeneity. The values of **$\theta$** from the combination of the Uniform and Informative priors for the effect with both priors for heterogeneity (four in total), will be considered as exploratory sensitivity analysis for our main model (See \@ref(fig:thetaprior)). The latter consists of the Weakly Informative prior for **$\mu$**, as was previously described in \@ref(maineffect) of this preregistration protocol. We aim to include all models for the sensitivity analysis as supplemental material to the future manuscript.
+From the combination of priors for **$\mu$** and **$\tau$**, a total of six meta-models will be conducted for each outcome, two for each of the three priors for the overall effect and the two priors for heterogeneity. The values of **$\theta$** from the combination of the Uniform and Informative priors for the effect, with both priors for heterogeneity (four in total), will be considered as exploratory sensitivity analysis for our main model (Fig. \@ref(fig:thetaprior)). The latter consists of the Weakly Informative prior for **$\mu$**, as was previously described in \@ref(maineffect) of this preregistration protocol. We aim to include all models for the sensitivity analysis as supplemental material to the future manuscript.
 
-```{r thetaprior, fig.cap = "$\\theta$ prior distributions for $\\tau \\sim \\mbox{half-Cauchy(0.5)}$ and every prior for $\\mu$", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
+```{r thetaprior, fig.cap = "Prior distributions for $\\theta$ given all priors for $\\mu$ with $\\tau \\sim \\mbox{half-Cauchy(0.5)}$", fig.align='center', warning = F, message = F, echo = F, out.width='85%'}
 
 
 mu_1 <- rnorm(n = 10000, mean = 0, sd = 0.5)
@@ -241,11 +256,11 @@ tribble(~theta, ~value,
 
 ### Exploratory analysis
 
-We will conduct exploratory analysis to estimate the extent to which moderators of interest to the literature may influence results. We will explore the relationship between clinical factors (such as age and symptom severity), sociodemographical variables (level of education, socioeconomic status), and differences in performance on measures of neuropsychological functioning between individuals with PMDD and comparison groups. The effects of moderators on SMDs will be assessed by bayesian hierarchical models (meta-regression) procedures as implemented in the `bayesmeta` package.
+We will conduct exploratory analysis to estimate the extent to which moderators of interest to the literature may influence results. We will explore the relationship between clinical factors (such as age and symptom severity), sociodemographical variables (level of education, socioeconomic status), and differences in performance on measures of neuropsychological functioning between individuals with PMDD and comparison groups. The effects of moderators on SMDs will be assessed by bayesian hierarchical models (meta-regression) as implemented in the `bayesmeta` package.
 
 ## Publication bias
 
-To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most accurate results possible given the amount of information that is available at the time of data synthesis. Both evidences *for* (in case an effect is likely) and *against* (in case effects are unlikely) a moderator effect will be summarized by Bayes Factors.
+To assess the possibility of publication bias in the available literature, we will conduct a series of methods in an attempt to quantify meta-biases as possible. Publication bias is still a highly active research area and no method to detect bias seems to outperform the others [@carterCorrectingBiasPsychology], so we will attempt to provide the most accurate results possible given the amount of information that is available at the time of data synthesis. Both evidences *for* (in case an effect is likely) and *against* (in case effects are unlikely) a moderator will be summarized by Bayes Factors.
 
 ## Reproducibility and analysis code
 
